@@ -54,7 +54,6 @@ data class Repositories(
     val notifications_url: String,
     val open_issues_count: Int,
     val owner: Owner,
-    val permissions: Permissions,
     val private: Boolean,
     val pulls_url: String,
     val pushed_at: String,
