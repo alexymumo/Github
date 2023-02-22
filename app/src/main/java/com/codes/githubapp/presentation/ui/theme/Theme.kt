@@ -1,4 +1,4 @@
-package com.codes.githubapp.ui.theme
+package com.codes.githubapp.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
