@@ -4,8 +4,8 @@ import com.codes.githubapp.common.Resource
 import com.codes.githubapp.data.remote.api.GithubApi
 import com.codes.githubapp.data.repository.mappers.toDomain
 import com.codes.githubapp.domain.models.Followers
-import com.codes.githubapp.domain.models.User
 import com.codes.githubapp.domain.models.Repositories
+import com.codes.githubapp.domain.models.User
 import com.codes.githubapp.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -19,7 +19,9 @@ class UserRepositoryImpl @Inject constructor(private val githubApi: GithubApi): 
         emit(Resource.Loading())
         try {
             val githubResponse = githubApi.searchUser(username)
-            emit(Resource.Success(data = githubResponse.toDomain()))
+            if (githubResponse != null) {
+                emit(Resource.Success(githubResponse.toDomain()))
+            }
         } catch (exception: IOException) {
             emit(Resource.Error(message = "An error occurred"))
         } catch (httpException: HttpException) {

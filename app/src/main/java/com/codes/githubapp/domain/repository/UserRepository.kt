@@ -2,8 +2,8 @@ package com.codes.githubapp.domain.repository
 
 import com.codes.githubapp.common.Resource
 import com.codes.githubapp.domain.models.Followers
-import com.codes.githubapp.domain.models.User
 import com.codes.githubapp.domain.models.Repositories
+import com.codes.githubapp.domain.models.User
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
