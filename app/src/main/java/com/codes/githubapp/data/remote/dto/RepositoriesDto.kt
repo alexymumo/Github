@@ -53,7 +53,7 @@ data class RepositoriesDto(
     val node_id: String,
     val notifications_url: String,
     val open_issues_count: Int,
-    val owner: OwnerDto,
+    val owner: UserDto,
     val private: Boolean,
     val pulls_url: String,
     val pushed_at: String,

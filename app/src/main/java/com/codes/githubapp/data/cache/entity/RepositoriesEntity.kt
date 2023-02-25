@@ -1,6 +1,10 @@
-package com.codes.githubapp.domain.models
+package com.codes.githubapp.data.cache.entity
 
-data class Repositories(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "repository_table")
+data class RepositoriesEntity(
     val archive_url: String,
     val archived: Boolean,
     val assignees_url: String,
@@ -37,6 +41,7 @@ data class Repositories(
     val homepage: String,
     val hooks_url: String,
     val html_url: String,
+    @PrimaryKey
     val id: Int,
     val is_template: Boolean,
     val issue_comment_url: String,
@@ -44,7 +49,7 @@ data class Repositories(
     val issues_url: String,
     val keys_url: String,
     val labels_url: String,
-    val language: Any,
+    val language: String,
     val languages_url: String,
     val merges_url: String,
     val milestones_url: String,
@@ -53,7 +58,7 @@ data class Repositories(
     val node_id: String,
     val notifications_url: String,
     val open_issues_count: Int,
-    val owner: User,
+    //val owner: OwnerEntity,
     val pulls_url: String,
     val pushed_at: String,
     val releases_url: String,
@@ -67,7 +72,7 @@ data class Repositories(
     val svn_url: String,
     val tags_url: String,
     val teams_url: String,
-    val topics: List<String>,
+    //val topics: List<String>,
     val trees_url: String,
     val updated_at: String,
     val url: String,

@@ -1,6 +1,6 @@
-package com.codes.githubapp.data.remote.dto
+package com.codes.githubapp.domain.models
 
-data class OwnerDto(
+data class User(
     val avatar_url: String,
     val events_url: String,
     val followers_url: String,
