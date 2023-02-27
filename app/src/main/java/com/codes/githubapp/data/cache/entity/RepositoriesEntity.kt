@@ -1,5 +1,6 @@
 package com.codes.githubapp.data.cache.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -58,7 +59,8 @@ data class RepositoriesEntity(
     val node_id: String,
     val notifications_url: String,
     val open_issues_count: Int,
-    //val owner: OwnerEntity,
+    @Embedded
+    val owner: OwnerEntity,
     val pulls_url: String,
     val pushed_at: String,
     val releases_url: String,

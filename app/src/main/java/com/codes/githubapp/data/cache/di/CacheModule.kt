@@ -2,7 +2,7 @@ package com.codes.githubapp.data.cache.di
 
 import android.content.Context
 import androidx.room.Room
-import com.codes.githubapp.data.cache.database.AppDatabase
+import com.codes.githubapp.data.cache.database.GithubDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,10 +16,10 @@ object CacheModule {
 
     @Singleton
     @Provides
-    fun provideRoomDatabase(@ApplicationContext context: Context): AppDatabase {
+    fun provideRoomDatabase(@ApplicationContext context: Context): GithubDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
-            AppDatabase::class.java,
+            GithubDatabase::class.java,
             "github.db"
         ).build()
     }
