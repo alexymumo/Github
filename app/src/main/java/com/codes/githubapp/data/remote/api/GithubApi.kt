@@ -11,7 +11,7 @@ interface GithubApi {
     @GET("users/{username}")
     suspend fun searchUser(
         @Path("username") username: String,
-        @Header("Authorization") accessToken: String = "we"
+        @Header("Authorization") accessToken: String = "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"
     ): UserDto
 
     @GET("users/{username}/following")

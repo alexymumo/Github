@@ -67,7 +67,7 @@ data class Repositories(
     val svn_url: String,
     val tags_url: String,
     val teams_url: String,
-    val topics: List<String>,
+
     val trees_url: String,
     val updated_at: String,
     val url: String,
