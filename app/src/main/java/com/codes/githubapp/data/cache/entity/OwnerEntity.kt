@@ -3,7 +3,8 @@ package com.codes.githubapp.data.cache.entity
 import androidx.room.PrimaryKey
 
 data class OwnerEntity(
-    val avatar_url: String,
+    val avatar_url: String
+    /*
     val events_url: String,
     val followers_url: String,
     val following_url: String,
@@ -22,4 +23,6 @@ data class OwnerEntity(
     val subscriptions_url: String,
     val type: String,
     val url: String
+
+     */
 )

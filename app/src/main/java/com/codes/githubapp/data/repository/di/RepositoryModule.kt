@@ -1,5 +1,7 @@
 package com.codes.githubapp.data.repository.di
 
+import com.codes.githubapp.data.cache.dao.UserDao
+import com.codes.githubapp.data.cache.database.GithubDatabase
 import com.codes.githubapp.data.remote.api.GithubApi
 import com.codes.githubapp.data.repository.repository.UserRepositoryImpl
 import com.codes.githubapp.domain.repository.UserRepository
@@ -15,7 +17,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideUserRepository(githubApi: GithubApi): UserRepository {
-        return UserRepositoryImpl(githubApi = githubApi)
+    fun provideUserRepository(githubApi: GithubApi, database: GithubDatabase): UserRepository {
+        return UserRepositoryImpl(githubApi, database.userDao())
     }
 }

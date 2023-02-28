@@ -1,15 +1,15 @@
 package com.codes.githubapp.presentation.screens.home
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.codes.githubapp.presentation.views.SearchBar
 import com.codes.githubapp.presentation.views.UserCard
@@ -21,9 +21,6 @@ fun HomeScreen(
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
-   // val state = homeViewModel.userData.value
-    val search = homeViewModel.search
-
     val userState by homeViewModel.userData
     val searchString by homeViewModel.search
     
@@ -35,17 +32,22 @@ fun HomeScreen(
                     homeViewModel.setSearch(it) },
                 onSearchClicked = {
                     homeViewModel.searchUserByName(it.trim())
-                })
+                },
+                placeholder = "Search..."
+            )
         }
     ) {
-        Column(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            if (userState.user != null && !userState.isLoading) {
-                UserCard(
-                    user = userState.user,
-                    modifier = Modifier.fillMaxWidth()
-                )
+        LazyColumn(contentPadding = PaddingValues(horizontal = 5.dp)) {
+            item {
+                if (userState.user != null && !userState.isLoading) {
+                    UserCard(
+                        user = userState.user,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+            item {
+
             }
         }
     }

@@ -42,7 +42,7 @@ data class RepositoriesEntity(
     val homepage: String,
     val hooks_url: String,
     val html_url: String,
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = false)
     val id: Int,
     val is_template: Boolean,
     val issue_comment_url: String,
@@ -74,7 +74,6 @@ data class RepositoriesEntity(
     val svn_url: String,
     val tags_url: String,
     val teams_url: String,
-    //val topics: List<String>,
     val trees_url: String,
     val updated_at: String,
     val url: String,

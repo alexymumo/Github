@@ -5,6 +5,10 @@ import com.codes.githubapp.domain.models.User
 
 internal fun UserEntity.toDomain(): User {
     return User(
-        avatar_url, bio, blog, collaborators, company, created_at, disk_usage, email, events_url, followers, followers_url, following, following_url, gists_url, gravatar_id, hireable, html_url, id, location, login, name, node_id, organizations_url, owned_private_repos, private_gists, public_gists, public_repos, received_events_url, repos_url, site_admin, starred_url, subscriptions_url, total_private_repos, twitter_username, two_factor_authentication, type, updated_at, url
+        this.avatar_url,
+        this.bio,
+        this.blog,
+        this.collaborators,
+        this.company, this.created_at, this.disk_usage, this.email, this.events_url, this.followers, this.followers_url, this.following, this.following_url, this.gists_url, this.gravatar_id, this.hireable, this.html_url, this.id, this.location, this.login, this.name, this.node_id, this.organizations_url, this.owned_private_repos, this.private_gists, this.public_gists, this.public_repos, this.received_events_url, this.repos_url, this.site_admin, this.starred_url, this.subscriptions_url, this.total_private_repos, this.twitter_username, this.two_factor_authentication, this.type, this.updated_at, this.url
     )
 }
