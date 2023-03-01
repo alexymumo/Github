@@ -4,8 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.codes.githubapp.data.cache.database.GithubDatabase
-import com.codes.githubapp.data.cache.entity.UserEntity
-import com.codes.githubapp.data.cache.sample.userEntity
+import com.codes.githubapp.data.cache.sample.followingEntity
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -16,55 +15,53 @@ import org.robolectric.RobolectricTestRunner
 import java.io.IOException
 
 @RunWith(RobolectricTestRunner::class)
-class UserDaoTest {
-    private lateinit var userDao: UserDao
+class FollowingDaoTest {
+
     private lateinit var database: GithubDatabase
+    private lateinit var followingDao: FollowingDao
 
     @Before
-    @Throws(IOException::class)
-    fun setup() { 
+    fun setup() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         database = Room.inMemoryDatabaseBuilder(
             context,
             GithubDatabase::class.java
         ).build()
-        userDao = database.userDao()
+        followingDao = database.followingDao()
     }
 
-
-
-
     @Test
-    fun `test insert user`() {
+    fun `test save user following`() {
         runBlocking {
-            userDao.saveUser(userEntity)
-            val result = userDao.getUserByName("Alex Mumo")
-            Truth.assertThat(result).isEqualTo(userEntity)
+            val followingList = listOf(followingEntity)
+            followingDao.insertFollowing(followingList)
+            val following = followingDao.getFollowing()
+            Truth.assertThat(following).isEqualTo(followingList)
         }
     }
 
     @Test
-    fun `test delete user`() {
+    fun `test delete user following`() {
         runBlocking {
-            userDao.saveUser(userEntity)
-            userDao.deleteUser()
-            val result = userDao.getUserByName("Alex Mumo")
-            Truth.assertThat(result).isNull()
+            followingDao.insertFollowing(listOf(followingEntity))
+            followingDao.deleteFollowing()
+            val following = followingDao.getFollowing()
+            Truth.assertThat(following).isEmpty()
         }
     }
 
     @Test
-    fun `test getUserByName`() {
+    fun `test followingDao fetches user following`() {
         runBlocking {
-            userDao.saveUser(userEntity)
-            val user = userDao.getUserByName("Alex Mumo")
-            Truth.assertThat(user).isNotNull()
+            followingDao.insertFollowing(listOf(followingEntity))
+            val result = followingDao.getFollowing()
+            Truth.assertThat(result).isNotEmpty()
         }
     }
 
     @After
     @Throws(IOException::class)
-    fun tearDown() {
+    fun teardown() {
         database.close()
     }
 }
