@@ -27,9 +27,11 @@ class UserRepositoryImpl @Inject constructor(private val githubApi: GithubApi,pr
         emit(Resource.Loading())
 
         val getDataFromDb = userDao.getUserByName(username)
-        emit(Resource.Success(getDataFromDb.toDomain()))
+        if (getDataFromDb != null) {
+            emit(Resource.Success(getDataFromDb.toDomain()))
+        }
         try {
-            val userResponse = githubApi.searchUser(username?:"")
+            val userResponse = githubApi.searchUser(username)
             userDao.deleteUser()
             userDao.saveUser(userResponse.toEntity())
             userResponse.let {

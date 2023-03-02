@@ -18,7 +18,7 @@ import com.codes.githubapp.data.cache.entity.RepositoriesEntity
         FollowingEntity::class,
         FollowersEntity::class],
     exportSchema = false,
-    version = 2
+    version = 5
 )
 abstract class GithubDatabase : RoomDatabase() {
     abstract fun followersDao(): FollowersDao

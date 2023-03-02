@@ -37,12 +37,11 @@ fun HomeScreen(
             )
         }
     ) {
-        LazyColumn(contentPadding = PaddingValues(horizontal = 5.dp)) {
+        LazyColumn {
             item {
                 if (userState.user != null && !userState.isLoading) {
                     UserCard(
-                        user = userState.user,
-                        modifier = Modifier.fillMaxWidth()
+                        user = userState.user
                     )
                 }
             }

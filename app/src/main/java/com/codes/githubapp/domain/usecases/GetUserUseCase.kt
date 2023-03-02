@@ -13,5 +13,8 @@ class GetUserUseCase(private val userRepository: UserRepository) {
 
 
 data class UserUseCase(
-    val userUseCase: GetUserUseCase
+    val userUseCase: GetUserUseCase,
+    val followersUseCase: GetFollowersUseCase,
+    val followingUseCase: GetFollowingUseCase,
+    val repositoryUseCase: GetRepositoryUseCase
 )
