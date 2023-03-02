@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.codes.githubapp.presentation.views.EmptyScreen
 import com.codes.githubapp.presentation.views.SearchBar
 import com.codes.githubapp.presentation.views.UserCard
 
@@ -33,7 +31,7 @@ fun HomeScreen(
                 onSearchClicked = {
                     homeViewModel.searchUserByName(it.trim())
                 },
-                placeholder = "Search..."
+                placeholder = "Search here..."
             )
         }
     ) {
@@ -43,6 +41,9 @@ fun HomeScreen(
                     UserCard(
                         user = userState.user
                     )
+                }
+                if (userState.user == null) {
+                    EmptyScreen()
                 }
             }
             item {

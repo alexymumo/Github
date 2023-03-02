@@ -1,6 +1,7 @@
 package com.codes.githubapp.presentation.state
 
-import com.codes.githubapp.domain.models.Following
+import com.codes.domain.models.Following
+
 
 data class FollowingState(
     val following: List<Following> = emptyList(),

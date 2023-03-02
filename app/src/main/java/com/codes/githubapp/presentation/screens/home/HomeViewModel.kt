@@ -4,8 +4,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.codes.githubapp.common.Resource
-import com.codes.githubapp.domain.usecases.UserUseCase
+import com.codes.common.Resource
+import com.codes.domain.usecases.UserUseCase
 import com.codes.githubapp.presentation.state.FollowerState
 import com.codes.githubapp.presentation.state.FollowingState
 import com.codes.githubapp.presentation.state.UserState
