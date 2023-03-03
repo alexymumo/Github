@@ -12,7 +12,7 @@ interface FollowersDao {
     suspend fun insertFollowers(followersEntity: List<FollowersEntity>)
 
     @Query("DELETE FROM followers_table")
-    suspend fun deleteFollowers(followersEntity: FollowersEntity)
+    suspend fun deleteFollowers()
 
     @Query("SELECT * FROM followers_table")
     suspend fun getFollowers(): List<FollowersEntity>

@@ -14,7 +14,7 @@ interface UserDao {
     suspend fun saveUser(userEntity: UserEntity)
 
     @Query("DELETE FROM user_table")
-    suspend fun deleteUser(userEntity: UserEntity)
+    suspend fun deleteUser()
 
     @Query("SELECT * FROM user_table WHERE login =:username")
     suspend fun getUserByName(username :String?): UserEntity

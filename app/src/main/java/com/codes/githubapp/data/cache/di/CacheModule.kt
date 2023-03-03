@@ -21,6 +21,6 @@ object CacheModule {
             context.applicationContext,
             GithubDatabase::class.java,
             "github.db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }

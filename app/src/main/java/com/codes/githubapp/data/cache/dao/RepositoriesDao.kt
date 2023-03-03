@@ -12,7 +12,7 @@ interface RepositoriesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRepositories(repositoriesEntity: List<RepositoriesEntity>)
     @Query("DELETE FROM repository_table")
-    suspend fun deleteRepositories(repositoriesEntity: RepositoriesEntity)
+    suspend fun deleteRepositories()
 
     @Query("SELECT * FROM repository_table")
     suspend fun getUserRepositories() : List<RepositoriesEntity>

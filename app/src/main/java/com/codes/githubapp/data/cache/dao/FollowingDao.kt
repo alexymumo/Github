@@ -13,7 +13,7 @@ interface FollowingDao {
     suspend fun insertFollowing(followingEntity: List<FollowingEntity>)
 
     @Query("DELETE FROM following_table")
-    suspend fun deleteFollowing(followingEntity: List<FollowingEntity>)
+    suspend fun deleteFollowing()
 
     @Query("SELECT * FROM following_table")
     suspend fun getFollowing(): List<FollowingEntity>

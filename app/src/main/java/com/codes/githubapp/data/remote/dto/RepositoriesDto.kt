@@ -44,7 +44,7 @@ data class RepositoriesDto(
     val issues_url: String,
     val keys_url: String,
     val labels_url: String,
-    val language: Any,
+    val language: String,
     val languages_url: String,
     val merges_url: String,
     val milestones_url: String,
@@ -53,7 +53,7 @@ data class RepositoriesDto(
     val node_id: String,
     val notifications_url: String,
     val open_issues_count: Int,
-    val owner: UserDto,
+    val owner: OwnerDto,
     val private: Boolean,
     val pulls_url: String,
     val pushed_at: String,
@@ -68,10 +68,13 @@ data class RepositoriesDto(
     val svn_url: String,
     val tags_url: String,
     val teams_url: String,
-    val topics: List<String>,
     val trees_url: String,
     val updated_at: String,
     val url: String,
     val visibility: String,
     val watchers_count: Int
+)
+
+data class OwnerDto(
+    val avatar_url: String
 )
