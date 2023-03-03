@@ -39,23 +39,20 @@ fun UserCard(
         ) {
             Column {
                 Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(5.dp)) {
+                    .fillMaxWidth()) {
                     AsyncImage(
                         model = ImageRequest.Builder(LocalContext.current)
                             .data(user?.avatar_url)
                             .crossfade(true)
                             .build(),
                         contentDescription = "image",
-                        contentScale = ContentScale.Crop,
                         modifier = Modifier
-                            .clip(CircleShape)
                             .size(100.dp)
+                            .weight(3f)
                             .border(
-                                border = BorderStroke(
-                                    width = 2.dp,
-                                    color = Color.Gray
-                                )
+                                width = 2.dp,
+                                color = Color.Gray,
+                                shape = CircleShape
                             )
                     )
                     Spacer(modifier = Modifier.width(15.dp))
@@ -106,7 +103,7 @@ fun EmptyScreen() {
     Column(
         verticalArrangement = Arrangement.Center
     ) {
-
+        Text(text = "No user with that name")
     }
 }
 

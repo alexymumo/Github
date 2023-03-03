@@ -1,6 +1,6 @@
 package com.codes.githubapp.presentation.state
 
-import com.codes.githubapp.domain.models.Repositories
+import com.codes.domain.models.Repositories
 
 data class RepositoryState (
     val repositories: List<Repositories> = emptyList(),
