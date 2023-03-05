@@ -1,5 +1,8 @@
 package com.codes.remote.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class RepositoriesDto(
     val archive_url: String,
     val archived: Boolean,

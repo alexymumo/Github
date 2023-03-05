@@ -5,10 +5,6 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
-def localPropertiesFile = rootProject.file("local.properties")
-def localProperties = new Properties()
-localProperties.load(new FileInputStream(localPropertiesFile))
-
 android {
     namespace 'com.codes.remote'
     compileSdk 33
@@ -19,8 +15,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-
-        buildConfigField "String", "API_KEY", localProperties['API_KEY']
     }
 
     buildTypes {
@@ -70,4 +64,18 @@ dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // testing
+    testImplementation "junit:junit:$junit_test_version"
+    testImplementation "org.hamcrest:hamcrest:2.2"
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "com.google.truth:truth:$truth_version"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_version"
+    testImplementation "org.mockito:mockito-inline:3.11.2"
+    testImplementation "androidx.arch.core:core-testing:$arch_core_testing"
+    testImplementation "org.robolectric:robolectric:$roboelectric_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_android_test_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_android_test_version"
+    implementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
 }

@@ -1,5 +1,6 @@
 package com.codes.remote.api
 
+import com.codes.common.Constants.USER_TOKEN
 import com.codes.remote.dto.FollowersDto
 import com.codes.remote.dto.FollowingDto
 import com.codes.remote.dto.RepositoriesDto
@@ -12,25 +13,25 @@ interface GithubApi {
     @GET("users/{username}")
     suspend fun searchUser(
         @Path("username") username: String,
-        @Header("Authorization") accessToken: String = "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"
+        @Header("Authorization") accessToken: String = USER_TOKEN
     ): UserDto
 
 
     @GET("users/{username}/followers")
     suspend fun getUserFollowers(
         @Path("username") username: String,
-        @Header("Authorization") accessToken: String =""// BuildConfig.API_KEY
+        @Header("Authorization") accessToken: String = USER_TOKEN
     ): List<FollowersDto>
 
     @GET("users/{username}/following")
     suspend fun getUserFollowing(
         @Path("username") username: String,
-        @Header("Authorization") accessToken: String =""// BuildConfig.API_KEY
+        @Header("Authorization") accessToken: String = USER_TOKEN
      ): List<FollowingDto>
 
     @GET("users/{username}/repos")
     suspend fun getUserRepositories(
         @Path("username") username: String,
-        @Header("Authorization") accessToken: String = ""//BuildConfig.API_KEY
+        @Header("Authorization") accessToken: String = USER_TOKEN
     ): List<RepositoriesDto>
 }
