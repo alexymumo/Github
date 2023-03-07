@@ -42,7 +42,6 @@ object RemoteModule {
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
-
         return okHttpClient.build()
     }
 }

@@ -1,5 +1,8 @@
 package com.codes.remote.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class FollowersDto(
     val avatar_url: String,
     val events_url: String,

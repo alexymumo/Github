@@ -1,8 +1,6 @@
 package com.codes.remote.dto
 
 import kotlinx.serialization.Serializable
-
-
 @Serializable
 data class UserDto(
     val avatar_url: String,

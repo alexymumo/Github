@@ -18,14 +18,16 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): ViewModel() {
 
-    private val _userData = mutableStateOf(UserState())
-    val userData: State<UserState> = _userData
+    private val _user = mutableStateOf(UserState())
+    val user: State<UserState> = _user
+
 
     private val _following = mutableStateOf(FollowingState())
     val following: State<FollowingState> = _following
 
     private val _followers = mutableStateOf(FollowerState())
     val followers: State<FollowerState> = _followers
+
 
     private val _search = mutableStateOf("")
     val search: State<String> = _search
@@ -36,29 +38,31 @@ class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): V
 
     fun searchUserByName(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _userData.value = userData.value.copy(
+            _user.value = user.value.copy(
                 isLoading = false
             )
 
-            userUseCase.userUseCase(username).collectLatest { user ->
-                when(user) {
+            userUseCase.userUseCase(username).collectLatest { result ->
+                when(result) {
                     is Resource.Loading -> {
                     }
                     is Resource.Error -> {
 
                     }
                     is Resource.Success -> {
-                        _userData.value = userData.value.copy(
+                        _user.value = user.value.copy(
                             isLoading = false,
-                            user = user.data
+                            user = result.data
                         )
+                        getUserFollowers(username)
+                        getUserFollowing(username)
                     }
                 }
             }
         }
     }
 
-    fun getUserFollowers(username: String) {
+    private fun getUserFollowers(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _followers.value = _followers.value.copy(
                 isLoading = false
@@ -73,14 +77,13 @@ class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): V
                     }
                     is Resource.Error -> {
                         _followers.value = _followers.value.copy(
-                            errors = "An error occurred"
+
                         )
                     }
 
                     is Resource.Success -> {
                         _followers.value = _followers.value.copy(
-                            followers = followers.data?: emptyList(),
-                            isLoading = false
+                            followers = followers.data?: emptyList()
                         )
 
                     }
@@ -89,7 +92,7 @@ class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): V
         }
     }
 
-    fun getUserFollowing(username: String) {
+    private fun getUserFollowing(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
             userUseCase.followingUseCase(username).collectLatest { following ->
                 when(following) {
@@ -99,15 +102,9 @@ class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): V
                         )
                     }
                     is Resource.Error -> {
-                        _following.value = _following.value.copy(
-                            errors = "An error occurred"
-                        )
                     }
 
                     is Resource.Loading -> {
-                        _following.value = _following.value.copy(
-                            isLoading = false
-                        )
                     }
                 }
             }
