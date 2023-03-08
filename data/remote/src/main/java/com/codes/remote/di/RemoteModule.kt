@@ -1,6 +1,7 @@
 package com.codes.remote.di
 
 import com.codes.common.Constants.BASE_URL
+import com.codes.remote.api.AuthInterceptor
 import com.codes.remote.api.GithubApi
 import dagger.Module
 import dagger.Provides
@@ -28,6 +29,8 @@ object RemoteModule {
             .create(GithubApi::class.java)
     }
 
+
+    /*use build config for security*/
     @Provides
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -39,6 +42,7 @@ object RemoteModule {
     fun provideOkhttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         val okHttpClient =  OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(AuthInterceptor())
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
