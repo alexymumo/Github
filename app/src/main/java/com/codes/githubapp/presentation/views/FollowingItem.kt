@@ -48,6 +48,7 @@ fun FollowingItem(
                 fontWeight = FontWeight.Bold
             )
         )
+
     }
 }
 

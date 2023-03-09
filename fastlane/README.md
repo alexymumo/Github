@@ -13,10 +13,20 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### beta
+## Android
+
+### android test
 
 ```sh
-[bundle exec] fastlane beta
+[bundle exec] fastlane android test
+```
+
+Run all tests
+
+### android beta
+
+```sh
+[bundle exec] fastlane android beta
 ```
 
 Perform Firebase app distribution

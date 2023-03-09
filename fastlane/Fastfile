@@ -14,7 +14,16 @@
 # update_fastlane
 
 default_platform(:android)
+platform :android do
 
+  # Run all test
+  desc "Run all tests"
+  lane :test do
+    gradle(task: 'test')
+  end
+
+
+  # Firebase app distribution
   desc "Perform Firebase app distribution"
   lane :beta do
     gradle(
@@ -26,4 +35,5 @@ default_platform(:android)
         release_notes: "First CI set up",
         testers: "alexmumoit12@gmail.com"
     )
+  end
 end
