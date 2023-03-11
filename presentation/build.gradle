@@ -1,28 +1,20 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
-    id 'com.google.firebase.appdistribution'
-    id 'com.google.gms.google-services'
 }
 
 android {
-    namespace 'com.codes.githubapp'
+    namespace 'com.example.presentation'
     compileSdk 33
 
-
     defaultConfig {
-        applicationId "com.codes.githubapp"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -31,8 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0'
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -40,34 +36,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        compose true
-    }
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.2.0'
-    }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
-    }
-}
-
-kapt {
-    correctErrorTypes true
 }
 
 dependencies {
+    // app compat
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
+    // libs
     implementation(project(":domain"))
     implementation(project(":common"))
     implementation(project(":data:repository"))
-    implementation 'androidx.core:core-ktx:1.7.0'
+
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
 
     // Compose

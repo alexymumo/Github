@@ -1,9 +1,12 @@
-package com.codes.githubapp.presentation.views
+package com.example.presentation.navigation.views
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,38 +21,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.codes.domain.models.Following
+import com.codes.domain.models.Followers
+
 
 @Composable
-fun FollowingItem(
-    following: Following,
-    modifier: Modifier = Modifier
+fun FollowersItem(
+    modifier: Modifier = Modifier,
+    followers: Followers
 ) {
     Column(
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(following.avatar_url)
+                .data(followers.avatar_url)
                 .crossfade(true)
                 .build(),
             contentDescription = "image",
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Fit,
             modifier = modifier
                 .size(80.dp)
                 .clip(CircleShape)
                 .border(width = 2.dp, color = Color.Gray)
         )
         Text(
-            text = following.login,
+            text = followers.login,
             style = TextStyle(
-                color = Color.Black,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold
+                color = MaterialTheme.colors.background,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp
             )
         )
-
     }
 }
-
-
