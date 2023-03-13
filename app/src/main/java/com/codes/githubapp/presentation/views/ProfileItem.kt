@@ -41,6 +41,7 @@ fun ProfileItem(
         StatItem(
             user = user
         )
+        NameItem(user = user)
     }
 }
 

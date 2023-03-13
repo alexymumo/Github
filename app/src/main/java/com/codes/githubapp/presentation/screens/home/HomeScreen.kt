@@ -30,8 +30,6 @@ fun HomeScreen(
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     val userState by homeViewModel.user
-    val followingState by homeViewModel.following
-    val followersState by homeViewModel.followers
     val searchString by homeViewModel.search
     val scaffoldState = rememberScaffoldState()
     val context = LocalContext.current
@@ -48,8 +46,37 @@ fun HomeScreen(
                 },
                 placeholder = "Search here..."
             )
+        },
+        content = { paddingValues ->
+            Column(modifier = Modifier.fillMaxSize()) {
+                if (userState.user != null && !userState.isLoading) {
+                    ProfileItem(
+                        user = userState.user
+                    )
+                    NameItem(
+                        user = userState.user
+                    )
+                    Divider(modifier = Modifier.fillMaxWidth())
+                    InfoItem(
+                        user = userState.user!!
+                    )
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        BioItem(
+                            user = userState.user
+                        )
+                    }
+                    // Implement horizontal pager
+                }
+            }
         }
-    ) {
+    )
+}
+
+
+
+
+/*
+* {
         LazyColumn {
             item {
                 if (userState.user != null && !userState.isLoading) {
@@ -68,6 +95,17 @@ fun HomeScreen(
                             user = userState.user
                         )
                     }
+                }
+
+                if (userState.user == null || userState.isLoading) {
+                    EmptyItem(
+                        text = "Username does not exit",
+                        color = Color.Gray,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                if(userState.isLoading) {
+                    CircularProgressIndicator()
                 }
             }
             item {
@@ -106,25 +144,4 @@ fun HomeScreen(
             }
         }
     }
-}
-
-
-@Composable
-fun EmptyScreen() {
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.github),
-            contentDescription = "null"
-        )
-    }
-}
-
-@Preview
-@Composable
-fun EmptyScreenPreview() {
-    EmptyScreen()
-}
+* */

@@ -43,7 +43,8 @@ fun RepoItem(
                         .data(repo.owner.avatar_url)
                         .crossfade(true)
                         .build(),
-                    modifier = Modifier.size(80.dp)
+                    modifier = Modifier
+                        .size(80.dp)
                         .clip(CircleShape),
                     contentDescription = "repo"
                 )
@@ -67,6 +68,14 @@ fun RepoItem(
                     )
                 }
             }
+            Text(
+                text = repo.forks_count.toString(),
+                style = TextStyle(
+                    color = Color.Black,
+                    fontWeight = FontWeight.Thin,
+                    fontSize = 16.sp
+                )
+            )
             Text(
                 text = repo.description,
                 style = TextStyle(
