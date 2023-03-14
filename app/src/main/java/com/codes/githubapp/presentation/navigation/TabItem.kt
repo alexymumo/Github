@@ -1,5 +1,8 @@
 package com.codes.githubapp.presentation.navigation
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.TabRowDefaults
@@ -15,10 +18,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.codes.domain.usecases.UserUseCase
 import com.codes.githubapp.presentation.screens.home.HomeViewModel
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.PagerState
-import com.google.accompanist.pager.pagerTabIndicatorOffset
-import com.google.accompanist.pager.rememberPagerState
+import com.codes.githubapp.presentation.views.FollowersItem
+import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 
 sealed class TabItem(val title: String) {
@@ -27,20 +28,60 @@ sealed class TabItem(val title: String) {
     object RepositoryItem: TabItem("Repositories")
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun DetailItem(
-    userUseCase: UserUseCase,
     homeViewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val followingState by homeViewModel.following
-    val followersState by homeViewModel.followers
-    val repositoryState by homeViewModel
-
+    val tabs = listOf(TabItem.FollowerItem, TabItem.FollowingItem, TabItem.RepositoryItem)
+    val pageState = rememberPagerState()
+    Tabs(tabs = tabs, pageState = pageState)
+    DetailScreens(tabs = tabs, pageState = pageState, homeViewModel = homeViewModel)
 }
+
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Tabs(tabs: List<TabItem>, pageState: PagerState) {
+fun DetailScreens(
+    tabs: List<TabItem>,
+    pageState: PagerState,
+    homeViewModel: HomeViewModel
+) {
+    val followingState by homeViewModel.following
+    val followersState by homeViewModel.followers
+    // add repository state
+    HorizontalPager(state = pageState,count = tabs.size) { count ->
+        Column(modifier = Modifier.fillMaxSize()) {
+            if (count == 0) {
+                LazyColumn {
+                    items(10) {
+                        Text(text = "Alex Mumo")
+                    }
+                }
+            }
+            if (count == 1) {
+                LazyColumn {
+                    items(10) {
+                        Text(text = "Alex Mumo")
+                    }
+                }
+            }
+            if (count == 2) {
+                LazyColumn {
+                    items(34) {
+                        Text(text = "Nil")
+                    }
+                }
+            }
+        }
+    }
+}
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun Tabs(
+    tabs: List<TabItem>,
+    pageState: PagerState
+) {
     val scope = rememberCoroutineScope()
     TabRow(
         selectedTabIndex = pageState.currentPage,
@@ -82,5 +123,5 @@ fun TabPreview() {
         TabItem.RepositoryItem
     )
     val pagerState = rememberPagerState()
-    Tabs(tabs = tabs, pageState = pagerState)
+    //Tabs(tabs = tabs, pageState = pagerState)
 }

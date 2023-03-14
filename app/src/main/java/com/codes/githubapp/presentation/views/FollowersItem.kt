@@ -26,7 +26,6 @@ import com.codes.domain.models.Followers
 
 @Composable
 fun FollowersItem(
-    modifier: Modifier = Modifier,
     followers: Followers
 ) {
     Column(
@@ -40,7 +39,7 @@ fun FollowersItem(
                 .build(),
             contentDescription = "image",
             contentScale = ContentScale.Fit,
-            modifier = modifier
+            modifier = Modifier
                 .size(80.dp)
                 .clip(CircleShape)
                 .border(width = 2.dp, color = Color.Gray)
