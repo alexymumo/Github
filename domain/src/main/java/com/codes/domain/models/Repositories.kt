@@ -3,6 +3,8 @@ package com.codes.domain.models
 data class Owner(
     val avatar_url: String
 )
+
+
 data class Repositories(
     val archive_url: String,
     val archived: Boolean,

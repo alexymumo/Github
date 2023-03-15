@@ -8,6 +8,7 @@ import com.codes.common.Resource
 import com.codes.domain.usecases.UserUseCase
 import com.codes.githubapp.presentation.state.FollowerState
 import com.codes.githubapp.presentation.state.FollowingState
+import com.codes.githubapp.presentation.state.RepositoryState
 import com.codes.githubapp.presentation.state.UserState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +29,8 @@ class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): V
     private val _followers = mutableStateOf(FollowerState())
     val followers: State<FollowerState> = _followers
 
+    private val _repositories = mutableStateOf(RepositoryState())
+    val repositories: State<RepositoryState> = _repositories
 
     private val _search = mutableStateOf("")
     val search: State<String> = _search
@@ -56,9 +59,19 @@ class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): V
                         )
                         getUserFollowers(username)
                         getUserFollowing(username)
+                        getUserRepository(username)
                     }
                 }
             }
+        }
+    }
+
+    private fun getUserRepository(username: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _repositories.value = _repositories.value.copy(
+                isLoading = false
+            )
+
         }
     }
 

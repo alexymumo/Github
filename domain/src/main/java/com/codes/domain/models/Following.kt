@@ -1,5 +1,6 @@
 package com.codes.domain.models
 
+
 data class Following(
     val avatar_url: String,
     val events_url: String,

@@ -19,6 +19,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.codes.domain.usecases.UserUseCase
 import com.codes.githubapp.presentation.screens.home.HomeViewModel
 import com.codes.githubapp.presentation.views.FollowersItem
+import com.codes.githubapp.presentation.views.FollowingItem
+import com.codes.githubapp.presentation.views.RepoItem
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 
@@ -49,27 +51,34 @@ fun DetailScreens(
 ) {
     val followingState by homeViewModel.following
     val followersState by homeViewModel.followers
+    val repositoryState by homeViewModel.repositories
     // add repository state
     HorizontalPager(state = pageState,count = tabs.size) { count ->
         Column(modifier = Modifier.fillMaxSize()) {
             if (count == 0) {
                 LazyColumn {
-                    items(10) {
-                        Text(text = "Alex Mumo")
+                    items(followingState.following.size) { following ->
+                        followingState.following.get(following)?.let { following ->
+                            FollowingItem(following)
+                        }
                     }
                 }
             }
             if (count == 1) {
                 LazyColumn {
-                    items(10) {
-                        Text(text = "Alex Mumo")
+                    items(followersState.followers.size) { followers ->
+                        followersState.followers.get(followers)?.let {
+                            FollowersItem(it)
+                        }
                     }
                 }
             }
             if (count == 2) {
                 LazyColumn {
-                    items(34) {
-                        Text(text = "Nil")
+                    items(repositoryState.repositories.size) { repository ->
+                        repositoryState.repositories.get(repository)?.let {
+                            RepoItem(it)
+                        }
                     }
                 }
             }
