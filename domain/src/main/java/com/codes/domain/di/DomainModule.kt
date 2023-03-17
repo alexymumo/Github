@@ -2,7 +2,7 @@ package com.codes.domain.di
 
 import com.codes.domain.repository.FollowersRepository
 import com.codes.domain.repository.FollowingRepository
-import com.codes.domain.repository.UserRepoRepository
+import com.codes.domain.repository.ReposRepository
 import com.codes.domain.repository.UserRepository
 import com.codes.domain.usecases.*
 import dagger.Module
@@ -21,7 +21,7 @@ object DomainModule {
         userRepository: UserRepository,
         followersRepository: FollowersRepository,
         followingRepository: FollowingRepository,
-        repository: UserRepoRepository
+        repository: ReposRepository
     ): UserUseCase {
         return UserUseCase(
             userUseCase = GetUserUseCase(userRepository),

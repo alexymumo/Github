@@ -13,8 +13,7 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(private val githubApi: GithubApi, private val userDao: UserDao):
-    UserRepository {
+class UserRepositoryImpl @Inject constructor(private val githubApi: GithubApi, private val userDao: UserDao): UserRepository {
     /*
     * for searching users
     * @params username

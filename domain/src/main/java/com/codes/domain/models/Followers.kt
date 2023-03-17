@@ -1,5 +1,8 @@
 package com.codes.domain.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Followers(
     val avatar_url: String,
     val events_url: String,

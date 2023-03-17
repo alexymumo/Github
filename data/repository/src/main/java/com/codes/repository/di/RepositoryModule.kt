@@ -3,6 +3,7 @@ package com.codes.repository.di
 import com.codes.cache.database.GithubDatabase
 import com.codes.domain.repository.FollowersRepository
 import com.codes.domain.repository.FollowingRepository
+import com.codes.domain.repository.ReposRepository
 import com.codes.domain.repository.UserRepository
 import com.codes.repository.repository.FollowersRepositoryImpl
 import com.codes.repository.repository.FollowingRepositoryImpl
@@ -21,7 +22,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun providesRepository(githubApi: GithubApi, database: GithubDatabase): UserRepoRepositoryImpl {
+    fun providesRepository(githubApi: GithubApi, database: GithubDatabase): ReposRepository {
         return UserRepoRepositoryImpl(githubApi, database.repositoriesDao())
     }
 

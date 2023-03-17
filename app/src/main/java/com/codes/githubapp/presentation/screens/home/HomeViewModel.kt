@@ -68,10 +68,23 @@ class HomeViewModel @Inject constructor(private val userUseCase: UserUseCase): V
 
     private fun getUserRepository(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _repositories.value = _repositories.value.copy(
-                isLoading = false
-            )
+            userUseCase.repositoryUseCase(username).collectLatest { repositories ->
+                when(repositories) {
+                    is Resource.Success -> {
+                        _repositories.value = _repositories.value.copy(
+                            repositories = repositories.data?: emptyList()
+                        )
+                    }
+                    is Resource.Error -> {
 
+                    }
+                    is Resource.Loading -> {
+                        _repositories.value = _repositories.value.copy(
+                            isLoading = false
+                        )
+                    }
+                }
+            }
         }
     }
 
