@@ -28,7 +28,8 @@ fun RepoItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight(),
+            .wrapContentHeight()
+            .padding(all = 5.dp),
         elevation = 10.dp,
         shape = RoundedCornerShape(10.dp)
     ) {
@@ -59,32 +60,18 @@ fun RepoItem(
                             fontWeight = FontWeight.Bold
                         )
                     )
-                    Text(
-                        text = repo.language,
-                        style = TextStyle(
-                            color = Color.Black,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp
+                    repo.description?.let {
+                        Text(
+                            text = it,
+                            style = TextStyle(
+                                color = Color.Gray,
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Thin
+                            )
                         )
-                    )
+                    }
                 }
             }
-            Text(
-                text = repo.forks_count.toString(),
-                style = TextStyle(
-                    color = Color.Black,
-                    fontWeight = FontWeight.Thin,
-                    fontSize = 16.sp
-                )
-            )
-            Text(
-                text = repo.description,
-                style = TextStyle(
-                    color = Color.Black,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 16.sp
-                )
-            )
         }
     }
 }
