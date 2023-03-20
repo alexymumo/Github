@@ -1,15 +1,10 @@
 package com.codes.repository.di
 
+import com.codes.cache.dao.BookMarkDao
 import com.codes.cache.database.GithubDatabase
-import com.codes.domain.repository.FollowersRepository
-import com.codes.domain.repository.FollowingRepository
-import com.codes.domain.repository.ReposRepository
-import com.codes.domain.repository.UserRepository
-import com.codes.repository.repository.FollowersRepositoryImpl
-import com.codes.repository.repository.FollowingRepositoryImpl
-import com.codes.repository.repository.UserRepoRepositoryImpl
-import com.codes.repository.repository.UserRepositoryImpl
+import com.codes.domain.repository.*
 import com.codes.remote.api.GithubApi
+import com.codes.repository.repository.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,5 +37,11 @@ object RepositoryModule {
     @Provides
     fun providesFollowersRepository(githubApi: GithubApi, database: GithubDatabase): FollowersRepository {
         return FollowersRepositoryImpl(githubApi, database.followersDao())
+    }
+
+    @Singleton
+    @Provides
+    fun providesBookMarkRepository(database: GithubDatabase): BookMarkDao {
+        return database.bookMarkDao()
     }
 }

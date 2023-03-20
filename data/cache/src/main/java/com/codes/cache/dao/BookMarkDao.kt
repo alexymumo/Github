@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.codes.cache.entity.BookmarkEntity
+import kotlinx.coroutines.flow.Flow
 
 /*
 * BookMark Dao
@@ -13,12 +14,11 @@ import com.codes.cache.entity.BookmarkEntity
 
 @Dao
 interface BookMarkDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveBookMark(bookmarkEntity: BookmarkEntity)
 
     @Query("SELECT * FROM bookmark_table")
-    fun getAllBookMarks(): LiveData<List<BookmarkEntity>>
+    fun getAllBookMarks(): Flow<List<BookmarkEntity>>
 
     @Query("DELETE FROM bookmark_table")
     suspend fun deleteBookMark()

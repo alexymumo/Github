@@ -39,11 +39,58 @@ internal fun OwnerEntity.toDomain(): Owner {
         this.avatar_url
     )
 }
+
+internal fun User.toEntity(): BookmarkEntity {
+    return BookmarkEntity(
+        avatar_url=avatar_url,
+        bio = bio,
+        blog = bio,
+        collaborators = collaborators,
+        company = company,
+        created_at = created_at,
+        disk_usage = disk_usage,
+        email = email,
+        events_url = events_url,
+        followers = followers,
+        followers_url = followers_url,
+        following = following,
+        following_url = following_url,
+        gists_url = gists_url,
+        gravatar_id = gravatar_id,
+        hireable = hireable,
+        html_url = html_url,
+        id = id,
+        location = location,
+        login = login,
+        name = name,
+        node_id = node_id,
+        organizations_url = organizations_url,
+        owned_private_repos = owned_private_repos,
+        private_gists = private_gists,
+        public_gists = public_gists,
+        public_repos = public_repos,
+        received_events_url = received_events_url,
+        repos_url = repos_url,
+        site_admin = site_admin,
+        starred_url = starred_url,
+        subscriptions_url = subscriptions_url,
+        total_private_repos = total_private_repos,
+        twitter_username = twitter_username,
+        two_factor_authentication = two_factor_authentication,
+        type = type,
+        updated_at = updated_at,
+        url = url,
+        isBookMarked = false
+    )
+}
 internal fun RepositoriesEntity.toDomain(): Repositories {
     return Repositories(
          this.description ,
          this.id,
          this.name,
-         this.owner.toDomain()
+         this.owner.toDomain(),
+         this.language,
+         this.created_at,
+         this.watchers_count
     )
 }

@@ -70,6 +70,13 @@ fun RepoItem(
                             )
                         )
                     }
+                    Row {
+                        repo.language?.let {
+                            Text(
+                                text = it
+                            )
+                        }
+                    }
                 }
             }
         }

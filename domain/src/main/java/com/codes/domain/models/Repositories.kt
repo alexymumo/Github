@@ -12,5 +12,8 @@ data class Repositories(
     val description: String?,
     val id: Int,
     val name: String,
-    val owner: Owner
+    val owner: Owner,
+    val language: String?,
+    val created_at: String,
+    val watchers_count: Int
 )

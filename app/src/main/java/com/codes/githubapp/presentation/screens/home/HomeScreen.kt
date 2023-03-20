@@ -9,18 +9,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.codes.githubapp.presentation.navigation.DetailItem
+import com.codes.githubapp.presentation.screens.bookmark.BookMarkViewModel
 import com.codes.githubapp.presentation.views.*
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
-    homeViewModel: HomeViewModel = hiltViewModel()
+    homeViewModel: HomeViewModel = hiltViewModel(),
+    bookMarkViewModel: BookMarkViewModel = hiltViewModel()
 ) {
     val userState by homeViewModel.user
     val searchString by homeViewModel.search
     val scaffoldState = rememberScaffoldState()
     val context = LocalContext.current
+
     
     Scaffold(
         scaffoldState = scaffoldState,
@@ -39,7 +42,8 @@ fun HomeScreen(
             Column(modifier = Modifier.fillMaxSize()) {
                 if (userState.user != null && !userState.isLoading) {
                     ProfileItem(
-                        user = userState.user
+                        user = userState.user!!,
+                        bookMarkViewModel = bookMarkViewModel
                     )
                     NameItem(
                         user = userState.user

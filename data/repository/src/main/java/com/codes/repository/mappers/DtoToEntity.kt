@@ -84,6 +84,9 @@ internal fun RepositoriesDto.toEntity(): RepositoriesEntity {
         this.description ,
         this.id ,
         this.name,
-        this.owner.toEntity()
+        this.owner.toEntity(),
+        this.language,
+        this.created_at,
+        this.watchers_count
     )
 }

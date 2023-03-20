@@ -11,5 +11,8 @@ data class RepositoriesEntity(
     val id: Int,
     val name: String,
     @Embedded
-    val owner: OwnerEntity
+    val owner: OwnerEntity,
+    val language: String?,
+    val created_at: String,
+    val watchers_count: Int
 )
