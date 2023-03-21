@@ -10,16 +10,16 @@ import com.codes.githubapp.presentation.screens.settings.SettingScreen
 
 
 @Composable
-fun NavigationGraph(navHostController: NavHostController) {
-    NavHost(navController = navHostController, startDestination = NavItem.Home.route) {
+fun NavigationGraph(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = NavItem.Home.route) {
         composable(NavItem.Home.route) {
             HomeScreen()
         }
         composable(NavItem.Bookmark.route) {
-            BookMarkScreen()
+            BookMarkScreen(navController = navController)
         }
         composable(NavItem.Settings.route) {
-            SettingScreen()
+            SettingScreen(navController = navController)
         }
     }
 }

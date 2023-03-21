@@ -1,11 +1,10 @@
 package com.codes.githubapp.presentation.views
 
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -28,29 +27,65 @@ import com.codes.domain.models.Followers
 fun FollowersItem(
     followers: Followers
 ) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(5.dp),
+        elevation = 20.dp,
+        shape = RoundedCornerShape(10.dp)
     ) {
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(followers.avatar_url)
-                .crossfade(true)
-                .build(),
-            contentDescription = "image",
-            contentScale = ContentScale.Fit,
+        Row(
             modifier = Modifier
-                .size(80.dp)
-                .clip(CircleShape)
-                .border(width = 2.dp, color = Color.Gray)
-        )
-        Text(
-            text = followers.login,
-            style = TextStyle(
-                color = MaterialTheme.colors.background,
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
-            )
-        )
+                .fillMaxWidth()
+                .padding(5.dp)
+        ) {
+            Card(
+                modifier = Modifier
+                    .height(80.dp)
+                    .width(80.dp)
+            ) {
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(followers.avatar_url)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = "bookmark_image"
+                )
+            }
+            Spacer(modifier = Modifier.width(5.dp))
+            Column {
+                Text(
+                    text = followers.login,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+                Text(
+                    text = "",
+                    fontWeight = FontWeight.Thin,
+                    fontSize = 16.sp
+                )
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = "",
+                        fontWeight = FontWeight.Thin,
+                        fontSize = 14.sp
+                    )
+                    Text(
+                        text = "",
+                        fontWeight = FontWeight.Thin,
+                        fontSize = 14.sp
+                    )
+                    Text(
+                        text = "",
+                        fontWeight = FontWeight.Thin,
+                        fontSize = 14.sp
+                    )
+                }
+            }
+        }
     }
 }

@@ -18,6 +18,6 @@ fun MainScreen() {
             BottomNav(navController = navController)
         }
     ) {
-        NavigationGraph(navHostController = navController)
+        NavigationGraph(navController = navController)
     }
 }
