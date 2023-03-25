@@ -64,17 +64,18 @@ fun BookMarkItem(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = bookmarkEntity.followers.toString(),
+                        text = "Followers${bookmarkEntity.followers}",
                         fontWeight = FontWeight.Thin,
                         fontSize = 14.sp
                     )
                     Text(
-                        text = bookmarkEntity.following.toString(),
+                        text = "Following ${bookmarkEntity.following}",
                         fontWeight = FontWeight.Thin,
                         fontSize = 14.sp
                     )
+                    //"@${user?.login}
                     Text(
-                        text = bookmarkEntity.public_repos.toString(),
+                        text = "Repos${(bookmarkEntity.public_repos)}",
                         fontWeight = FontWeight.Thin,
                         fontSize = 14.sp
                     )
