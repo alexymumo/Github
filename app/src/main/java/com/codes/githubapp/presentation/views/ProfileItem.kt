@@ -32,8 +32,7 @@ import com.codes.githubapp.presentation.screens.bookmark.BookMarkViewModel
 
 @Composable
 fun ProfileItem(
-    user: User,
-    bookMarkViewModel: BookMarkViewModel = hiltViewModel()
+    user: User
 ) {
     Row(
         modifier = Modifier
@@ -46,59 +45,6 @@ fun ProfileItem(
             user = user,
             contentDescription = "image"
         )
-        IconButton(
-            onClick = {
-                bookMarkViewModel.saveBookMark(
-                    BookmarkEntity(
-                        avatar_url = user.avatar_url,
-                        bio = user.bio,
-                        blog = user.blog,
-                        collaborators = user.collaborators,
-                        company = user.company,
-                        created_at = user.created_at,
-                        disk_usage = user.disk_usage,
-                        email = user.email,
-                        events_url = user.events_url,
-                        followers = user.followers,
-                        followers_url = user.followers_url,
-                        following = user.following,
-                        following_url = user.following_url,
-                        gists_url = user.gists_url,
-                        gravatar_id = user.gravatar_id,
-                        hireable = user.hireable,
-                        html_url = user.html_url,
-                        id = user.id,
-                        location = user.location,
-                        login = user.login,
-                        name = user.name,
-                        node_id = user.node_id,
-                        organizations_url = user.organizations_url,
-                        owned_private_repos = user.owned_private_repos,
-                        private_gists = user.private_gists,
-                        public_gists = user.public_gists,
-                        public_repos = user.public_repos,
-                        received_events_url = user.received_events_url,
-                        repos_url = user.repos_url,
-                        site_admin = user.site_admin,
-                        starred_url = user.starred_url,
-                        subscriptions_url = user.subscriptions_url,
-                        total_private_repos = user.total_private_repos,
-                        twitter_username = user.twitter_username,
-                        two_factor_authentication = user.two_factor_authentication,
-                        type = user.type,
-                        updated_at = user.updated_at,
-                        url = user.url,
-                        isBookMarked = true
-                    )
-                )
-            }
-        ) {
-            Icon(
-                Icons.Default.Favorite,
-                tint = Color.Magenta,
-                contentDescription = "image"
-            )
-        }
         StatItem(
             user = user
         )
@@ -154,7 +100,9 @@ fun StatItem(
                 maxLines = 1,
             )
         }
-        Column {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
                 text = user?.followers.toString(),
                 fontSize = 16.sp,
@@ -168,7 +116,9 @@ fun StatItem(
                 maxLines = 1,
             )
         }
-        Column {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
                 text = user?.following.toString(),
                 fontSize = 16.sp,
@@ -188,13 +138,12 @@ fun StatItem(
 
 @Composable
 fun NameItem(
-    user: User?,
-    modifier: Modifier = Modifier
+    user: User,
+    modifier: Modifier = Modifier,
+    bookMarkViewModel: BookMarkViewModel = hiltViewModel()
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 5.dp),
+        modifier = modifier.fillMaxWidth().padding(horizontal = 5.dp),
         horizontalArrangement = Arrangement.Start
     ) {
         Column(
@@ -213,6 +162,59 @@ fun NameItem(
                     fontWeight = FontWeight.Thin,
                     fontSize = 16.sp
                 )
+            )
+        }
+        IconButton(
+            onClick = {
+                bookMarkViewModel.saveBookMark(
+                    BookmarkEntity(
+                        avatar_url = user.avatar_url,
+                        bio = user.bio,
+                        blog = user.blog,
+                        collaborators = user.collaborators,
+                        company = user.company,
+                        created_at = user.created_at,
+                        disk_usage = user.disk_usage,
+                        email = user.email,
+                        events_url = user.events_url,
+                        followers = user.followers,
+                        followers_url = user.followers_url,
+                        following = user.following,
+                        following_url = user.following_url,
+                        gists_url = user.gists_url,
+                        gravatar_id = user.gravatar_id,
+                        hireable = user.hireable,
+                        html_url = user.html_url,
+                        id = user.id,
+                        location = user.location,
+                        login = user.login,
+                        name = user.name,
+                        node_id = user.node_id,
+                        organizations_url = user.organizations_url,
+                        owned_private_repos = user.owned_private_repos,
+                        private_gists = user.private_gists,
+                        public_gists = user.public_gists,
+                        public_repos = user.public_repos,
+                        received_events_url = user.received_events_url,
+                        repos_url = user.repos_url,
+                        site_admin = user.site_admin,
+                        starred_url = user.starred_url,
+                        subscriptions_url = user.subscriptions_url,
+                        total_private_repos = user.total_private_repos,
+                        twitter_username = user.twitter_username,
+                        two_factor_authentication = user.two_factor_authentication,
+                        type = user.type,
+                        updated_at = user.updated_at,
+                        url = user.url,
+                        isBookMarked = true
+                    )
+                )
+            }
+        ) {
+            Icon(
+                Icons.Default.Favorite,
+                tint = Color.Magenta,
+                contentDescription = "image"
             )
         }
     }

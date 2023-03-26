@@ -1,4 +1,4 @@
-package com.codes.githubapp.presentation.navigation
+package com.codes.githubapp.presentation.views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,18 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.codes.domain.usecases.UserUseCase
 import com.codes.githubapp.presentation.screens.home.HomeViewModel
-import com.codes.githubapp.presentation.views.FollowersItem
-import com.codes.githubapp.presentation.views.FollowingItem
-import com.codes.githubapp.presentation.views.RepoItem
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 
 sealed class TabItem(val title: String) {
     object FollowerItem: TabItem("Followers")
     object FollowingItem: TabItem("Following")
-    object RepositoryItem: TabItem("Repositories")
+    object RepositoryItem: TabItem("Repository")
 }
 
 @OptIn(ExperimentalPagerApi::class)
@@ -57,18 +53,18 @@ fun DetailScreens(
         Column(modifier = Modifier.fillMaxSize()) {
             if (count == 0) {
                 LazyColumn {
-                    items(followingState.following.size) { following ->
-                        followingState.following.get(following)?.let { following ->
-                            FollowingItem(following)
+                    items(followersState.followers.size) { followers ->
+                        followersState.followers.get(followers)?.let {
+                            FollowersItem(it)
                         }
                     }
                 }
             }
             if (count == 1) {
                 LazyColumn {
-                    items(followersState.followers.size) { followers ->
-                        followersState.followers.get(followers)?.let {
-                            FollowersItem(it)
+                    items(followingState.following.size) { following ->
+                        followingState.following.get(following)?.let { following ->
+                            FollowingItem(following)
                         }
                     }
                 }
@@ -108,8 +104,8 @@ fun Tabs(
                     Text(
                         text = tabItem.title,
                         maxLines = 1,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Thin
                     )},
                 selected = pageState.currentPage == index,
                 onClick = {
@@ -132,5 +128,5 @@ fun TabPreview() {
         TabItem.RepositoryItem
     )
     val pagerState = rememberPagerState()
-    //Tabs(tabs = tabs, pageState = pagerState)
+    Tabs(tabs = tabs, pageState = pagerState)
 }

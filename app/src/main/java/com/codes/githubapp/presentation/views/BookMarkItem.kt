@@ -64,7 +64,7 @@ fun BookMarkItem(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Followers${bookmarkEntity.followers}",
+                        text = "Followers ${bookmarkEntity.followers}",
                         fontWeight = FontWeight.Thin,
                         fontSize = 14.sp
                     )
@@ -73,9 +73,9 @@ fun BookMarkItem(
                         fontWeight = FontWeight.Thin,
                         fontSize = 14.sp
                     )
-                    //"@${user?.login}
+
                     Text(
-                        text = "Repos${(bookmarkEntity.public_repos)}",
+                        text = "Repos ${(bookmarkEntity.public_repos)}",
                         fontWeight = FontWeight.Thin,
                         fontSize = 14.sp
                     )

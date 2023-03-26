@@ -8,7 +8,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.codes.githubapp.presentation.navigation.DetailItem
 import com.codes.githubapp.presentation.screens.bookmark.BookMarkViewModel
 import com.codes.githubapp.presentation.views.*
 
@@ -42,11 +41,11 @@ fun HomeScreen(
             Column(modifier = Modifier.fillMaxSize()) {
                 if (userState.user != null && !userState.isLoading) {
                     ProfileItem(
-                        user = userState.user!!,
-                        bookMarkViewModel = bookMarkViewModel
+                        user = userState.user!!
                     )
                     NameItem(
-                        user = userState.user
+                        user = userState.user!!,
+                        bookMarkViewModel = bookMarkViewModel
                     )
                     Divider(modifier = Modifier.fillMaxWidth())
                     InfoItem(

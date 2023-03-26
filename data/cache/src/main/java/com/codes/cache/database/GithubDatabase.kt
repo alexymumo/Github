@@ -13,7 +13,7 @@ import com.codes.cache.entity.*
         FollowersEntity::class,
         BookmarkEntity::class],
     exportSchema = false,
-    version = 12
+    version = 13
 )
 abstract class GithubDatabase : RoomDatabase() {
     abstract fun followersDao(): FollowersDao

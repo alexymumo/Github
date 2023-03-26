@@ -87,6 +87,8 @@ internal fun RepositoriesDto.toEntity(): RepositoriesEntity {
         this.owner.toEntity(),
         this.language,
         this.created_at,
-        this.watchers_count
+        this.watchers_count,
+        this.forks_count,
+        this.stargazers_count
     )
 }
