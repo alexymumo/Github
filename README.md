@@ -40,14 +40,11 @@
 - [Coil](https://coil-kt.github.io/coil/compose/) - Image Library from loading images from the database and caching in memory.
 - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) - Library Support for coroutines,provides runBlocking coroutine builder used in tests.
 
-
 ## ScreenShots
 <table>
 <thead>
 <tr>
 <th align="center">Home</th>
-<th align="center">Following</th>
-<th align="center">Followers</th>
 <th align="center">Repositories</th>
 <th align="center">BookMarks</th>
 </tr>
@@ -55,8 +52,6 @@
 <tbody>
 <tr>
 <td><img src="assets/search.jpeg" width="300"></td>
-<td><img src="assets/following.jpeg" width="300"></td>
-<td><img src="assets/following.jpeg" width="300"></td>
 <td><img src="assets/repositories.jpeg" width="300"></td>
 <td><img src="assets/bookmarks.jpeg" width="300"></td>
 </tr>
@@ -65,6 +60,9 @@
 
 ## Test
 
+
 ## CI-CD
+
+
 
 
