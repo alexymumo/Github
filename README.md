@@ -6,6 +6,7 @@
 - [Architecture](#architecture)
 - [TechStack](#techstack)
 - [ScreenShots](#screenshots)
+- [Demo](#demo)
 - [Test](#test)
 - [CI-CD](#ci-cd)
 
@@ -57,6 +58,10 @@
 </tr>
 </tbody>
 </table>
+
+## Demo
+https://user-images.githubusercontent.com/56880898/229374267-4acc7092-e439-469a-8b97-77ef10f80db8.mp4
+
 
 ## Test
 
