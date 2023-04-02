@@ -1,23 +1,24 @@
 ## Github-App
-- Android application built using Kotlin and [Github API]("https://api.github.com/") to search github users
+- Android application built using Kotlin and [Github API](https://docs.github.com/en/rest?apiVersion=2022-11-28) to  search for a github user profile.
 
 ## Table of Contents
 - [Prerequisite](#prerequisite)
 - [Architecture](#architecture)
 - [TechStack](#techstack)
 - [ScreenShots](#screenshots)
+- [Test](#test)
 - [CI-CD](#ci-cd)
 
 
 ## Prerequisite
 - Android Studio
-- [API_KEY]("https://api.github.com/")
+- [Github Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ## Architecture
-
+<img src="assets/architecture.png"/>
 
 ## TechStack
-
+- [Kotlin](https://kotlin.org) - Modern but already mature programming language aimed to make developers happier. It's concise, safe, interoperable with Java and other languages, and provides many ways to reuse code between multiple platforms for productive programming.
 - [Hilt](https://hilt.com) - Dependency injection library for kotlin and android
 - [Jetpack Components](https://developer.android.com/jetpack)
     - [Jetpack Compose](https://developer.android.com/jetpack/compose) - Modern toolkit for building native UI.
@@ -41,6 +42,28 @@
 
 
 ## ScreenShots
+<table>
+<thead>
+<tr>
+<th align="center">Home</th>
+<th align="center">Following</th>
+<th align="center">Followers</th>
+<th align="center">Repositories</th>
+<th align="center">BookMarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="assets/search.jpeg" width="300"></td>
+<td><img src="assets/following.jpeg" width="300"></td>
+<td><img src="assets/following.jpeg" width="300"></td>
+<td><img src="assets/repositories.jpeg" width="300"></td>
+<td><img src="assets/bookmarks.jpeg" width="300"></td>
+</tr>
+</tbody>
+</table>
+
+## Test
 
 ## CI-CD
 
