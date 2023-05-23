@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.codes.githubapp.presentation.screens.bookmark.BookMarkViewModel
 import com.codes.githubapp.presentation.views.*
@@ -57,6 +58,13 @@ fun HomeScreen(
                         )
                     }
                     DetailItem(homeViewModel = homeViewModel)
+                    
+                    Button(
+                        onClick = {},
+                        modifier = Modifier.testTag("first button")
+                    ) {
+                        Text(text = "Push clicked")
+                    }
                     // Implement horizontal pager
                 }
             }
@@ -64,76 +72,3 @@ fun HomeScreen(
     )
 }
 
-
-
-
-/*
-* {
-        LazyColumn {
-            item {
-                if (userState.user != null && !userState.isLoading) {
-                    ProfileItem(
-                        user = userState.user
-                    )
-                    NameItem(
-                        user = userState.user
-                    )
-                    Divider(modifier = Modifier.fillMaxWidth())
-                    InfoItem(user = userState.user!!)
-                    Row(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        BioItem(
-                            user = userState.user
-                        )
-                    }
-                }
-
-                if (userState.user == null || userState.isLoading) {
-                    EmptyItem(
-                        text = "Username does not exit",
-                        color = Color.Gray,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-                if(userState.isLoading) {
-                    CircularProgressIndicator()
-                }
-            }
-            item {
-                Text(
-                    text = "Following",
-                    style = TextStyle(
-                        color = Color.Black,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp
-                    )
-                )
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(3.dp)
-                ) {
-                    items(followingState.following) { following ->
-                        FollowingItem(following = following)
-                    }
-                }
-            }
-            item {
-                Text(
-                    text = "Followers",
-                    style = TextStyle(
-                        color = Color.Black,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(3.dp)
-                ) {
-                    items(followersState.followers) { followers ->
-                        FollowersItem(followers = followers)
-                    }
-                }
-            }
-        }
-    }
-* */

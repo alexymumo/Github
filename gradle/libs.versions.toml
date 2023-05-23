@@ -1,0 +1,23 @@
+[versions]
+ktx = "1.7.0"
+androidGradlePlugin = "7.4.1"
+kt = "1.7.0"
+compose = "1.2.0"
+hilt = "2.44"
+kotlin = "1.7.0"
+room = "2.4.3"
+navigation-compose = "1.0.0"
+
+
+[libraries]
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "ktx"}
+android-hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt"}
+android-hilt-compiler = {module = "com.google.dagger:hilt-compiler", version.ref = "hilt"}
+android-hilt-nav-compose = {module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigation-compose"}
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin"}
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin"}
+
+
+[bundles]
