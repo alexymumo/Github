@@ -37,13 +37,12 @@ android {
 dependencies {
 
     implementation(project(":common"))
-    //implementation 'androidx.core:core-ktx:1.7.0'
+
     implementation(libs.androidx.core.ktx)
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation(libs.android.appCompat)
+
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation(libs.junit)
 
     // Okhttp
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
@@ -60,9 +59,9 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     // Coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_testing"
+    implementation(libs.coroutine.android)
+    implementation(libs.coroutine.core)
+    implementation(libs.coroutine.testing)
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"

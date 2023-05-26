@@ -7,6 +7,9 @@ hilt = "2.44"
 kotlin = "1.7.0"
 room = "2.4.3"
 navigation-compose = "1.0.0"
+coroutines = "1.6.4"
+lifecycle = "2.5.1"
+junit = "4.13.2"
 
 
 [libraries]
@@ -14,10 +17,45 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "ktx"}
 android-hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt"}
 android-hilt-compiler = {module = "com.google.dagger:hilt-compiler", version.ref = "hilt"}
 android-hilt-nav-compose = {module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigation-compose"}
+android-appCompat = "androidx.appcompat:appcompat:1.6.1"
+material-compose = "com.google.android.material:material:1.8.0"
+room-compiler = {module = "androidx.room:room-compiler", version.ref = "room"}
+room-ktx = {module = "androidx.room:room-ktx", version.ref = "room"}
+room-runtime = {module = "androidx.room:room-runtime", version.ref = "room"}
+room-testing = {module = "androidx.room:room-testing", version.ref = "room"}
+coroutine-core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+coroutine-android = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines"}
+coroutine-testing = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines"}
+datastore = "androidx.datastore:datastore-preferences:1.0.0"
+logger-timber = "com.jakewharton.timber:timber:5.0.1"
+test-roboelectric = "org.robolectric:robolectric:4.9"
+compose-activity = "androidx.activity:activity-compose:1.3.1"
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-test-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-constraintlayout = "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha07"
+lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+junit-androidx = "androidx.test.ext:junit:1.1.5"
+junit-androidx-ktx = "androidx.test.ext:junit-ktx:1.1.5"
+test-junit-ktx = "androidx.test.ext:junit-ktx:1.1.5"
+coil-compose = "io.coil-kt:coil-compose:2.2.2"
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
 
 [plugins]
+kotlin-android = {id = "org.jetbrains.kotlin.android", version.ref = "kt"}
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin"}
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin"}
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kt" }
 
 
 [bundles]
+room = ["room-ktx", "room-runtime", "room-testing"]
+compose = ["compose-activity", "compose-ui", "material-compose", "compose-ui-test-junit", "compose-constraintlayout", "compose-ui-test-manifest", "compose-ui-tooling-preview"]
+lifecycle = ["lifecycle-livedata", "lifecycle-runtime", "lifecycle-viewmodel-compose"]
+
