@@ -13,10 +13,10 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "GithubApp"
-include ':app'
-include ':domain'
-include ':data:remote'
-include ':data:cache'
-include ':data:repository'
-include ':common'
+include(":app")
+include(":domain")
+include(":data:remote")
+include(":data:cache")
+include(":data:repository")
+include(":common")
 

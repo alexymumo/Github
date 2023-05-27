@@ -37,6 +37,7 @@ dependencies {
 
     implementation(project(":common"))
     implementation(project(":data:cache"))
+    implementation(libs.androidx.core.ktx)
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -49,6 +50,8 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation(libs.android.hilt)
+
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-navigation-compose:1.1.0-alpha01"
 }
