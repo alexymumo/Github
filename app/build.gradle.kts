@@ -44,6 +44,9 @@ android {
         compose = true
     }
     testOptions {
+        managedDevices {
+
+        }
         unitTests {
             isIncludeAndroidResources = true
         }
